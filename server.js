@@ -14,7 +14,6 @@ var socketResponse = null;
 router.route('/:command')
     .get(function(req, res){
         var request = JSON.stringify({"command":req.params['command']});
-        console.log('here is the request' + request);
         runRuby(request);
         res.send(socketResponse);
     });
@@ -22,16 +21,8 @@ router.route('/:command')
 function runRuby(request){
     exec('ruby ./lib/test_socket.rb' + " " + "'" +request.toString() + "'", function (error, stdout, stderr) {
         socketResponse = stdout;
-        console.log('here is the stdout');
-        console.log(stdout);
-        //console.log('stderr: ' + stderr);
-        //console.log('error: ' + error);
     });
 }
 
 
 var server = app.use(serveStatic(__dirname + '/public')).use(router).listen(3000);
-//var server = app.use('/request', router).listen(3000);
-
-//User the router
-//var app=express().listen(3000);
