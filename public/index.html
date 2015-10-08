@@ -16,7 +16,7 @@
 <table class="table table-bordered table-hover table-condensed">
     <tr>
         <th class="col-md-2">
-            command
+            Basic Command
         </th>
 
 
@@ -31,7 +31,7 @@
 
     </tr>
 
-    <tr ng-repeat="command in commands">
+    <tr ng-repeat="command in basicCommands">
 
         <td>
             {{command}}
@@ -39,18 +39,54 @@
 
 
         <td>
-            <button ng-click="sendCommand(command)"> Query This:</button>
+            <button ng-click="sendBasicCommand(command)"> Query This:</button>
         </td>
 
         <td>
-            {{response}}
+            {{response1}}
         </td>
-
 
     </tr>
 
 </table>
 
+
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <th class="col-md-2">
+            Get Object Commands
+        </th>
+
+
+        <th class="col-md-2">
+            query
+        </th>
+
+        <th class="col-md-6">
+            Result
+        </th>
+
+
+    </tr>
+
+    <tr ng-repeat="command in getObjectCommands">
+
+        <td>
+            {{command}}
+        </td>
+
+
+        <td>
+            <button ng-click="sendGetObjectCommand(command)"> Query This:</button>
+        </td>
+
+        <td>
+            {{response2}}
+        </td>
+
+    </tr>
+
+</table>
 
 </body>
 </html>

@@ -4,13 +4,24 @@
 angular.module('app', [])
     .controller('MainController', function ($scope, requestService) {
 
-        var commands = new Array();
-        commands.push('get_screen');
-        $scope.commands = commands;
+        var basicCommands = new Array();
+        basicCommands.push('get_screen');
+        $scope.basicCommands = basicCommands;
 
-        $scope.sendCommand = function(command){
-            requestService.sendRequest(command).then(function(res){
-                $scope.response = res.data;
+        var getObjectCommands = new Array();
+        getObjectCommands.push('EBUI_Root');
+        $scope.getObjectCommands = getObjectCommands;
+
+
+        $scope.sendBasicCommand = function(command){
+            requestService.sendBasicCommand(command).then(function(res){
+                $scope.response1 = res.data;
+            });
+        };
+
+        $scope.sendGetObjectCommand = function(command){
+            requestService.sendGetObjectCommand(command).then(function(res){
+                $scope.response2 = res.data;
             });
         }
 
@@ -19,8 +30,13 @@ angular.module('app', [])
     .service('requestService', function ($http) {
         var root = "/";
         return {
-            sendRequest: function(command){
-                return $http.get(root+command);
+            sendBasicCommand: function(command){
+                return $http.get(root+ 'basic/' + command);
+                //return $http.get(root+ '{"command":"get_game_object", "object_name":"amobject"}');
+            },
+
+            sendGetObjectCommand: function(command){
+                return $http.get(root+'getObject/' + command);
             }
         }
     });
