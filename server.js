@@ -14,6 +14,9 @@ var socketResponse = null;
 router.route('/:command')
     .get(function(req, res){
         var request = JSON.stringify({"command":req.params['command']});
+        console.log('>>>>request found start: ');
+        console.log(request);
+        console.log('<<<<request found end: ');
         runRuby(request);
         res.send(socketResponse);
     });

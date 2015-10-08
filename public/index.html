@@ -3,10 +3,54 @@
     <!--<base href="/request/"/>-->
     <script src="./vendor/angular.js"></script>
     <script src="app.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" xmlns="http://www.w3.org/1999/html"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
-<body>
-<div ng-controller="MainController">
-    {{debug}}
-</div>
+
+
+<body ng-controller="MainController">
+
+
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <th class="col-md-2">
+            command
+        </th>
+
+
+        <th class="col-md-2">
+            query
+        </th>
+
+        <th class="col-md-6">
+            Result
+        </th>
+
+
+    </tr>
+
+    <tr ng-repeat="command in commands">
+
+        <td>
+            {{command}}
+        </td>
+
+
+        <td>
+            <button ng-click="sendCommand(command)"> Query This:</button>
+        </td>
+
+        <td>
+            {{response}}
+        </td>
+
+
+    </tr>
+
+</table>
+
+
 </body>
 </html>

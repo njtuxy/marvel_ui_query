@@ -3,9 +3,17 @@
  */
 angular.module('app', [])
     .controller('MainController', function ($scope, requestService) {
-        requestService.sendRequest('get_screen').then(function(res){
-            $scope.debug = res.data;
-        });
+
+        var commands = new Array();
+        commands.push('get_screen');
+        $scope.commands = commands;
+
+        $scope.sendCommand = function(command){
+            requestService.sendRequest(command).then(function(res){
+                $scope.response = res.data;
+            });
+        }
+
     })
 
     .service('requestService', function ($http) {
