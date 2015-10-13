@@ -60,7 +60,13 @@
 
 <h2> Get Object Command:</h2>
 
+
+
+
 <table class="table table-bordered table-hover table-condensed">
+
+
+
     <tr>
         <th class="col-md-2">
             Get Object Commands
@@ -75,8 +81,10 @@
             Result
         </th>
 
-
     </tr>
+
+
+    <!--<input type="text" class="col-md-4 input-sm" id="usr" placeholder="object name">-->
 
     <tr ng-repeat="command in getObjectCommands">
 
@@ -86,11 +94,19 @@
 
 
         <td>
-            <button ng-click="sendGetObjectCommand(command)"> Query This:</button>
+            <button ng-click="sendGetObjectCommand($index)"> Query This:</button>
         </td>
 
         <td>
-            {{response2}}
+            <div ng-show='clickedIndex === $index'>
+
+                <pre>
+                     {{response2}}
+                </pre>
+
+            </div>
+
+
         </td>
 
     </tr>
